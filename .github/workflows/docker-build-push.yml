@@ -24,6 +24,14 @@ jobs:
       - name: Spring Boot 빌드
         run: ./gradlew clean build -x test
 
+      - name: 빌드 결과 확인
+        run: |
+          pwd
+          ls -al
+          ls -al build || true
+          ls -al build/libs || true
+          cat .dockerignore || true
+
       - name: AWS 인증
         uses: aws-actions/configure-aws-credentials@v2
         with:
